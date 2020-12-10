@@ -285,7 +285,7 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('oops');
+  throw new Error('Not implemented');
 }
 
 
@@ -597,8 +597,13 @@ function getElementByIndexes(/* arr, indexes */) {
  */
 function swapHeadAndTail(/* arr */) {
   throw new Error('Not implemented');
+  /* if (arr.length % 2 === 0) {
+    arr.push(arr.splice(0, arr.length / 2));
+  }
+  const tail = arr.splice(Math.ceil(arr.length / 2), Math.floor(arr.length / 2));
+  const head = arr.splice(0, Math.floor(arr.length / 2));
+  return [].concat(tail).concat(arr).concat(head); */
 }
-
 
 module.exports = {
   findElement,
