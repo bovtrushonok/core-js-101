@@ -88,8 +88,8 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  return ((a + b) > c && (a + c) > b && (c + b) > a);
 }
 
 
@@ -156,8 +156,9 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  return ((point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2)
+  < (circle.radius ** 2);
 }
 
 
@@ -216,8 +217,8 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 
@@ -233,8 +234,8 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  return +(String(num).split('').reverse().join(''));
 }
 
 
@@ -258,8 +259,20 @@ function reverseInteger(/* num */) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  const checkingArr = String(ccn).split('');
+  const resArr = checkingArr.map((num, index) => {
+    if (checkingArr.length % 2 !== 0 && index % 2 !== 0 && index !== checkingArr.length - 1) {
+      const res = num * 2 > 9 ? num * 2 - 9 : num * 2;
+      return res;
+    }
+    if (checkingArr.length % 2 === 0 && index % 2 === 0 && index !== checkingArr.length - 1) {
+      const res = num * 2 > 9 ? num * 2 - 9 : num * 2;
+      return res;
+    }
+    return num;
+  });
+  return (resArr.reduce((sum, current) => +sum + +current) % 10 === 0);
 }
 
 /**
@@ -276,8 +289,12 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  const result = String(num).split('').reduce((sum, current) => +sum + +current);
+  if (result > 9) {
+    return String(result).split('').reduce((sum, current) => +sum + +current);
+  }
+  return result;
 }
 
 
@@ -304,6 +321,19 @@ function getDigitalRoot(/* num */) {
  */
 function isBracketsBalanced(/* str */) {
   throw new Error('Not implemented');
+  /* const bracketsPairs = ['[', ']', '(', ')', '{', '}', '<', '>'];
+  const arrToCheck = str.split('');
+  const result = arrToCheck.map((item, index) => {
+    if (this[index + 1] === bracketsPairs[bracketsPairs.indexOf(item) + 1]) {
+      arrToCheck.splice(index, 2);
+    }
+    return '';
+  });
+
+  if (result.join('') === '') {
+    return true;
+  }
+  return false; */
 }
 
 
