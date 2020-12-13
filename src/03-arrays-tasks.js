@@ -621,14 +621,15 @@ function getElementByIndexes(arr, indexes) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
-  /* if (arr.length % 2 === 0) {
-    arr.push(arr.splice(0, arr.length / 2));
+function swapHeadAndTail(arr) {
+  if (arr.length % 2 === 0) {
+    const tail = arr.splice(0, arr.length / 2);
+    return [].concat(...arr).concat(...tail);
   }
-  const tail = arr.splice(Math.ceil(arr.length / 2), Math.floor(arr.length / 2));
-  const head = arr.splice(0, Math.floor(arr.length / 2));
-  return [].concat(tail).concat(arr).concat(head); */
+  const tail = arr.splice(0, Math.floor(arr.length / 2));
+  const head = arr.splice(1, Math.ceil(arr.length / 2));
+
+  return [].concat(...head).concat(...arr).concat(...tail);
 }
 
 module.exports = {
