@@ -329,21 +329,14 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
-  /* const bracketsPairs = ['[', ']', '(', ')', '{', '}', '<', '>'];
-  const arrToCheck = str.split('');
-  const result = arrToCheck.map((item, index) => {
-    if (this[index + 1] === bracketsPairs[bracketsPairs.indexOf(item) + 1]) {
-      arrToCheck.splice(index, 2);
-    }
-    return '';
-  });
-
-  if (result.join('') === '') {
-    return true;
+function isBracketsBalanced(str) {
+  let result = str.replace('[]', '').replace('{}', '').replace('<>', '').replace('()', '');
+  let leng = 0;
+  while (leng !== result.length) {
+    leng = result.length;
+    result = result.replace('{}', '').replace('<>', '').replace('[]', '').replace('()', '');
   }
-  return false; */
+  return result.length === 0;
 }
 
 
@@ -407,8 +400,10 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  const result = m1.map((arr, index) => arr.map((item, ind) => m2[index][ind] * item
+    .reduce((sum, current) => sum + current)));
+  return result;
 }
 
 
