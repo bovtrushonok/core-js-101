@@ -54,7 +54,7 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-  throw new Error('Not implemented');
+  return /(?=p(i|o|a|\s)t)[a-zA-Z]{0,13}/g;
 }
 
 
