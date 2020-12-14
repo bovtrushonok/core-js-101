@@ -54,7 +54,8 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-  return /(?=p(i|o|a|\s)t)[a-zA-Z]{0,13}/g;
+  return /p(i|o|a| )t/;
+  /* return /(?=.*?[a-z])(?=p(i|o|a|\s)t)[a-zA-Z]/; */
 }
 
 
